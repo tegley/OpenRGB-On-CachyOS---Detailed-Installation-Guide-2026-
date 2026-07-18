@@ -1,4 +1,5 @@
-# Making RAM visible for OpenRGB on Arch Linux
+# Detailed Installation Guide
+Installation
 ## 1. Set kernel parameters
 1. Open the GRUB configuration file:
 ```
