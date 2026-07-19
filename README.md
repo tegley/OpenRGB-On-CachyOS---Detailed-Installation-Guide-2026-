@@ -1,6 +1,28 @@
 # Detailed Installation Guide
-Installation
-## 1. Set kernel parameters
+## Documentation Links
+OpenRGB:
+- [GitLab - README](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/README.md?ref_type=heads)
+- [GitLab - SMBus Access](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/SMBusAccess.md?ref_type=heads)
+- [GitLab - KernelParameters](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/KernelParameters.md?ref_type=heads)
+- [Website - Supported Devices](https://openrgb.org/devices_0.9.html)
+OpenLinkHub:
+- [GitHub - README](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/README.md)
+- [OpenRGB Integration](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/openrgb/README.md)
+Other:
+- [Helpful Reddit thread](https://www.reddit.com/r/archlinux/comments/1kl9g4o/openrgb_and_ram/)
+- [Arch Linux info on GRUB]
+
+## Application Installations
+1. Open CachyOS Hello: Install Apps → Repo → Search 'openrgb' → Install
+2. Check to see if UDev rules installed properly, they should be located here:
+```
+/usr/lib/udev/rules.d/60-openrgb.rules
+```
+If you have Corsair iCUE Products)
+3. Open CachyOS Hello: Install Apps → Repo → Search 'openlinkhub' → Install
+
+## For those with Gigabyte Motherboards With APCI Conflict (see Gitlab - Kernel Parameters)
+### 1. Set kernel parameters
 1. Open the GRUB configuration file:
 ```
 sudo nano /etc/default/grub
@@ -9,24 +31,25 @@ sudo nano /etc/default/grub
 ```
 GRUB_CMDLINE_LINUX=""
 ```
-3. Add `acpi_enforce_resources=lax` between both ", do not remove anything:
+3. Add `acpi_enforce_resources=lax` between both ", type out exactly as below:
 ```
 GRUB_CMDLINE_LINUX="acpi_enforce_resources=lax"
 ```
 4. Save and close the file (CTRL+O → Enter → CTRL+X)
-## 2. Regenerate GRUB
+### 2. Regenerate GRUB
 ```
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## 3. Restart system
-```
-reboot
-```
-## 4. Loading I²C modules
+### 3. Restart your system.
+
+## For those with RGB RAM Modules and Other I2C Devices (see Gitlab - SMBus Access)
+### 1. Load I2C modules
 After the reboot
 ```
 sudo modprobe i2c-dev
 ```
+
+
 - then for AMD:
 ```
 sudo modprobe i2c-piix4
