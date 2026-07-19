@@ -5,12 +5,14 @@ OpenRGB:
 - [GitLab - SMBus Access](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/SMBusAccess.md?ref_type=heads)
 - [GitLab - KernelParameters](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/KernelParameters.md?ref_type=heads)
 - [Website - Supported Devices](https://openrgb.org/devices_0.9.html)
+
 OpenLinkHub:
 - [GitHub - README](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/README.md)
 - [OpenRGB Integration](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/openrgb/README.md)
+
 Other:
+- [Arch Linux Wiki - Info on GRUB](https://wiki.archlinux.org/title/Kernel_parameters#GRUB)
 - [Helpful Reddit thread](https://www.reddit.com/r/archlinux/comments/1kl9g4o/openrgb_and_ram/)
-- [Arch Linux info on GRUB]
 
 ## Application Installations
 1. Open CachyOS Hello: Install Apps → Repo → Search 'openrgb' → Install
@@ -43,38 +45,19 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ### 3. Restart your system.
 
 ## For those with RGB RAM Modules and Other I2C Devices (see Gitlab - SMBus Access)
-### 1. Load I2C modules
-After the reboot
+### 1. Open Konsole and load I2C modules
 ```
 sudo modprobe i2c-dev
 ```
-
-
-- then for AMD:
-```
-sudo modprobe i2c-piix4
-```
-- or for Intel:
-```
-sudo modprobe i2c-i801
-```
-## 5. Enable modules permanently
-Create file:
-```
-sudo nano /etc/modules-load.d/i2c.conf
-```
-- for AMD enter content:
-```
-i2c-dev
-i2c-piix4
-```
-- or for Intel enter content:
-```
-i2c-dev
-i2c-i801
-```
+### 2. Enter following commands based according to your motherboard:
+| For AMD Motherboards  | For Intel Motherboards |
+| ------------- | ------------- |
+| `sudo modprobe i2c-piix4`  | `sudo modprobe i2c-i801`  |
+| `sudo nano /etc/modules-load.d/i2c.conf` | `sudo nano /etc/modules-load.d/i2c.conf` |
+| `i2c-dev` <br> `i2c-piix4` |`i2c-dev`<br>`i2c-i801`|
 Save and close the file (CTRL+O → Enter → CTRL+X)
-## 6. Set user rights for I²C
+
+### 3. Set user rights for I2C
 1. Create rule:
 ```
 sudo nano /etc/udev/rules.d/60-i2c.rules
@@ -95,26 +78,10 @@ sudo usermod -aG i2c $USER
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 ```
-5. Log out and log back in, or reboot
-## 7. Setup autostart (if you want)
-1. Find OpenRGB (usually */usr/bin/openrgb*)
-```
-which openrgb
-```
-2. Check where your OpenRGB profile is saved, for example
-```
-/home/yourusername/.config/openrgb/myprofileXY.orp
-```
-3. Create autostart folder
-```
-mkdir -p ~/.config/autostart
-```
-4. Create file for OpenRGB
-```
-nano ~/.config/autostart/openrgb.desktop
-```
-5. Insert the following content (adjust the path to OpenRGB and your OpenRGB profile)
-```
+### 3. Restart your system.
+
+
+
 [Desktop Entry]
 Type=Application
 Name=OpenRGB
