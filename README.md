@@ -1,18 +1,19 @@
 # Detailed Installation Guide
 ## Documentation Links
 OpenRGB:
-- [GitLab - README](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/README.md?ref_type=heads)
+- [README](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/README.md?ref_type=heads)
 - [GitLab - SMBus Access](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/SMBusAccess.md?ref_type=heads)
 - [GitLab - KernelParameters](https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/Documentation/KernelParameters.md?ref_type=heads)
 - [Website - Supported Devices](https://openrgb.org/devices_0.9.html)
 
 OpenLinkHub:
-- [GitHub - README](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/README.md)
+- [README](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/README.md)
 - [OpenRGB Integration](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/openrgb/README.md)
 
 Other:
 - [Arch Linux Wiki - Info on GRUB](https://wiki.archlinux.org/title/Kernel_parameters#GRUB)
 - [Helpful Reddit thread](https://www.reddit.com/r/archlinux/comments/1kl9g4o/openrgb_and_ram/)
+- [Another helpful Reddit thread](https://www.reddit.com/r/linuxquestions/comments/10n1chc/trying_to_get_my_i2cdev_and_i2cpiix4_to_load/)
 
 ## Application Installations
 1. Open CachyOS Hello: Install Apps → Repo → Search 'openrgb' → Install
@@ -33,7 +34,7 @@ sudo nano /etc/default/grub
 ```
 GRUB_CMDLINE_LINUX=""
 ```
-3. Add `acpi_enforce_resources=lax` between both ", type out exactly as below:
+3. Add `acpi_enforce_resources=lax` between both double quotes (" "), should be EXACTLY as below:
 ```
 GRUB_CMDLINE_LINUX="acpi_enforce_resources=lax"
 ```
@@ -44,7 +45,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ### 3. Restart your system.
 
-## For those with RGB RAM Modules and Other I2C Devices (see Gitlab - SMBus Access)
+## For those with RGB RAM Modules or Other I2C Devices (see Gitlab - SMBus Access)
 ### 1. Open Konsole and load I2C modules
 ```
 sudo modprobe i2c-dev
@@ -57,7 +58,7 @@ sudo modprobe i2c-dev
 | `i2c-dev` <br> `i2c-piix4` |`i2c-dev`<br>`i2c-i801`|
 Save and close the file (CTRL+O → Enter → CTRL+X)
 
-### 3. Set user rights for I2C
+### 3. Give user access to piix4/i801 controllers
 1. Create rule:
 ```
 sudo nano /etc/udev/rules.d/60-i2c.rules
@@ -73,15 +74,14 @@ Save and close the file (CTRL+O → Enter → CTRL+X)
 sudo groupadd i2c
 sudo usermod -aG i2c $USER
 ```
-4. Reload rules:
+4. Reload UDev rules:
 ```
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 ```
-### 3. Restart your system.
+### 4. Restart your system.
 
-
-
+## Create application shortcuts
 [Desktop Entry]
 Type=Application
 Name=OpenRGB
