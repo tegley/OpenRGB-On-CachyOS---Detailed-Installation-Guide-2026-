@@ -22,12 +22,17 @@ Other:
 
 ## Application Installations
 1. Open CachyOS Hello: Install Apps → Repo → Search 'openrgb' → Install
-2. Check to see if UDev rules installed properly, they should be located here:
+2. Check to see if OpenRGB UDev rules installed properly, they should be located here:
 ```
 /usr/lib/udev/rules.d/60-openrgb.rules
 ```
 If you have Corsair iCUE Products)
+
 3. Open CachyOS Hello: Install Apps → Repo → Search 'openlinkhub' → Install
+4. Check to see if
+```
+/etc/udev/rules.d/99-openlinkhub.rules
+```
 
 ## For those with Gigabyte Motherboards With APCI Conflict (see Gitlab - Kernel Parameters)
 ### 1. Set kernel parameters
