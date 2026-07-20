@@ -10,6 +10,11 @@ OpenLinkHub:
 - [README](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/README.md)
 - [OpenRGB Integration](https://github.com/jurkovic-nikola/OpenLinkHub/blob/main/openrgb/README.md)
 
+Resizing Addressable RGB Zones:
+- [Arctic Liquid Freezer III Pro 360 ARGB - Led Count](https://gitlab.com/CalcProgrammer1/OpenRGB/-/work_items?sort=created_date&state=opened&search=%5BFeature+Request%5D&first_page_size=20&show=eyJpaWQiOiI1NDc3IiwiZnVsbF9wYXRoIjoiQ2FsY1Byb2dyYW1tZXIxL09wZW5SR0IiLCJpZCI6MTg0NzQxMzM1fQ%3D%3D)
+- [7900 XTX Nitro+ - Led Count](https://gitlab.com/CalcProgrammer1/OpenRGB/-/work_items?sort=created_date&state=opened&search=7900+xtx&first_page_size=20&show=eyJpaWQiOiI0ODE3IiwiZnVsbF9wYXRoIjoiQ2FsY1Byb2dyYW1tZXIxL09wZW5SR0IiLCJpZCI6MTY3NzUyNDA5fQ%3D%3D)
+- [Corsair RS120 ARGB - Led Count](https://www.corsair.com/us/en/p/case-fans/co-9050180-ww/rs120-argb-120mm-pwm-fan-co-9050180-ww)
+
 Other:
 - [Arch Linux Wiki - Info on GRUB](https://wiki.archlinux.org/title/Kernel_parameters#GRUB)
 - [Helpful Reddit thread](https://www.reddit.com/r/archlinux/comments/1kl9g4o/openrgb_and_ram/)
